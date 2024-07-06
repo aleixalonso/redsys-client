@@ -12,7 +12,10 @@
     "dev": "rollup -c --watch",
     "build": "rollup -c",
     "prebuild": "rm -rf ./dist",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
+    "publish": "npm publish"
   },
   "keywords": [],
   "author": "",
