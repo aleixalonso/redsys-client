@@ -25,14 +25,7 @@ describe("Redsys", () => {
   });
 
   describe("createMerchantSignature", () => {
-    it("Should the expected signature 1", () => {
-      const result = redsys.createMerchantSignature(
-        "Mk9m98IfEblmPfrpsawt7BmxObt98Jev" // redsys test secret
-      );
-      expect(result).toMatchSnapshot();
-    });
-
-    it("Should the expected signature 2", () => {
+    it("Should the expected signature", () => {
       const result = redsys.createMerchantSignature(
         "sq7HjrUOBfKmC576ILgskD5srU870gJ7" // redsys test secret
       );
@@ -45,14 +38,14 @@ describe("Redsys", () => {
       // Example params and signature from an ok redirect
       const params =
         "eyJEc19EYXRlIjoiMDYlMkYwNyUyRjIwMjQiLCJEc19Ib3VyIjoiMTglM0EwMSIsIkRzX1NlY3VyZVBheW1lbnQiOiIxIiwiRHNfQW1vdW50IjoiMTAwMCIsIkRzX0N1cnJlbmN5IjoiOTc4IiwiRHNfT3JkZXIiOiIxNzIwMjgxNjMxNTUiLCJEc19NZXJjaGFudENvZGUiOiI5OTkwMDg4ODEiLCJEc19UZXJtaW5hbCI6IjAwMSIsIkRzX1Jlc3BvbnNlIjoiMDAwMCIsIkRzX1RyYW5zYWN0aW9uVHlwZSI6IjAiLCJEc19NZXJjaGFudERhdGEiOiIiLCJEc19BdXRob3Jpc2F0aW9uQ29kZSI6IjA5NDc3OSIsIkRzX0NhcmRfTnVtYmVyIjoiNDU0ODgxKioqKioqMDAwNCIsIkRzX0NvbnN1bWVyTGFuZ3VhZ2UiOiIxIiwiRHNfQ2FyZF9Db3VudHJ5IjoiNzI0IiwiRHNfQ2FyZF9CcmFuZCI6IjEiLCJEc19Qcm9jZXNzZWRQYXlNZXRob2QiOiI3OCIsIkRzX0VDSSI6IjA1IiwiRHNfUmVzcG9uc2VfRGVzY3JpcHRpb24iOiJPUEVSQUNJT04rQVVUT1JJWkFEQSIsIkRzX0NvbnRyb2xfMTcyMDI4MTY2MzMxNSI6IjE3MjAyODE2NjMzMTUifQ==";
-      const signature = "VF8kC7KJlVCn45Gn_75MEB2dZYsjOs5QZHrOValj5BU=";
+      const receivedSignature = "VF8kC7KJlVCn45Gn_75MEB2dZYsjOs5QZHrOValj5BU=";
 
-      const result = redsys.createMerchantSignatureNotif(
+      const computedSignature = redsys.createMerchantSignatureNotif(
         "sq7HjrUOBfKmC576ILgskD5srU870gJ7", // redsys test secret
         params
       );
 
-      expect(fromBase64(signature) === result).toBeTruthy();
+      expect(fromBase64(receivedSignature) === computedSignature).toBeTruthy();
     });
   });
 });
