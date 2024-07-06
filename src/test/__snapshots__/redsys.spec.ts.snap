@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Redsys createMerchantParameters Should the expected base64 string 1`] = `"eyJEc19NZXJjaGFudF9NZXJjaGFudENvZGUiOiI5OTkwMDg4ODEiLCJEc19NZXJjaGFudF9UZXJtaW5hbCI6IjEiLCJEc19NZXJjaGFudF9UcmFuc2FjdGlvblR5cGUiOiIwIiwiRHNfTWVyY2hhbnRfQW1vdW50IjoxMDAwLCJEc19NZXJjaGFudF9DdXJyZW5jeSI6Ijk3OCIsIkRzX01lcmNoYW50X09yZGVyIjoiMTIzNDU2Nzg5MCIsIkRzX01lcmNoYW50X01lcmNoYW50VVJMIjoiaHR0cHM6Ly93d3cuZXhhbXBsZS5jb20ifQ=="`;
+
+exports[`Redsys createMerchantSignature Should the expected signature 1 1`] = `"OPJuOLcSOI0gNnSebhlf62K8bCK6LDPp8qlDFldHgtA="`;
+
+exports[`Redsys createMerchantSignature Should the expected signature 2 1`] = `"OQjbr1NseO5mhg/l7nq6a5e6LOpiQ1BpSv+sfz+6/e0="`;
