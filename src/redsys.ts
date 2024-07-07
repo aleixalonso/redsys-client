@@ -51,10 +51,7 @@ export class Redsys {
     const decodedData = JSON.parse(Buffer.from(params, "base64").toString());
 
     // Encrypt order
-    const orderEncoded = encrypt3DES(
-      decodedData.Ds_Order || decodedData.DS_MERCHANT_ORDER,
-      secret
-    );
+    const orderEncoded = encrypt3DES(decodedData.Ds_Order, secret);
 
     // Compute signature with the order encoded and params from response
     const computedSignature = mac256(orderEncoded, params);

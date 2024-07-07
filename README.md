@@ -1,15 +1,15 @@
 # redsys-client
 
-Redsys Inspired client from Redsys PHP and Java official clients. [Check](https://canales.redsys.es/canales/ayuda/documentacion/Manual%20integracion%20para%20conexion%20por%20Redireccion.pdf) Redsys official documentation for more information
+Redsys redirection client inspired from the Redsys PHP and Java official clients.
 
-Test parameters can be found [here](https://pagosonline.redsys.es/entornosPruebas.html)
+## Redsys Client Usage
 
-### Redsys Request Usage
+### Client initialization
 
 1. Create the Redsys Client
 
 ```
-    redsys = new Redsys();
+    const redsys = new Redsys();
     redsys.merchantParameters = {
       Ds_Merchant_MerchantCode: "999008881",
       Ds_Merchant_Terminal: "1",
@@ -21,7 +21,9 @@ Test parameters can be found [here](https://pagosonline.redsys.es/entornosPrueba
     };
 ```
 
-2. Create the needed merchant parameters and secret to call Redsys
+### Redsys request
+
+1. Create the needed merchant parameters and secret to call Redsys
 
 ```
 const merchantParameters = redsys.createMerchantParameters();
@@ -29,11 +31,23 @@ const merchantParameters = redsys.createMerchantParameters();
 const signature = redsys.createMerchantSignature("sq7HjrUOBfKmC576ILgskD5srU870gJ7");
 ```
 
-3. To validate a given merchant params and signature, use createMerchantSignatureNotif
+### Redsys redirect validate signature
+
+1. To validate a given signature, use `createMerchantSignatureNotif``
 
 ```
 const computedSignature = redsys.createMerchantSignatureNotif("sq7HjrUOBfKmC576ILgskD5srU870gJ7", params);
 
-computedSignature === receivedSignature
+if(computedSignature === receivedSignature){
+  console.log("OK")
+} else {
+  console.log("INVALID")
+}
 
 ```
+
+## Useful resources
+
+- Official Redsys [documentation](https://canales.redsys.es/canales/ayuda/documentacion/Manual%20integracion%20para%20conexion%20por%20Redireccion.pdf)
+
+- [Test Parameters](https://pagosonline.redsys.es/entornosPruebas.html)
