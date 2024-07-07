@@ -59,4 +59,21 @@ export class Redsys {
     // Return the signature in URL-safe Base64
     return fromBase64(computedSignature);
   }
+
+  public isMerchantSignatureValid(
+    receivedSignature: string,
+    secret: string,
+    params: string
+  ): boolean {
+    const decodedData = JSON.parse(Buffer.from(params, "base64").toString());
+
+    // Encrypt order
+    const orderEncoded = encrypt3DES(decodedData.Ds_Order, secret);
+
+    // Compute signature with the order encoded and params from response
+    const computedSignature = mac256(orderEncoded, params);
+
+    // Return valid if the received signature matches the computed one
+    return fromBase64(receivedSignature) === fromBase64(computedSignature);
+  }
 }

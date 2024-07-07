@@ -26,9 +26,11 @@ Redsys redirection client inspired from the Redsys PHP and Java official clients
 1. Create the needed merchant parameters and secret to call Redsys
 
 ```
+const secret = "sq7HjrUOBfKmC576ILgskD5srU870gJ7";
+
 const merchantParameters = redsys.createMerchantParameters();
 
-const signature = redsys.createMerchantSignature("sq7HjrUOBfKmC576ILgskD5srU870gJ7");
+const signature = redsys.createMerchantSignature(secret);
 ```
 
 ### Redsys redirect validate signature
@@ -36,7 +38,7 @@ const signature = redsys.createMerchantSignature("sq7HjrUOBfKmC576ILgskD5srU870g
 1. To validate a given signature, use `createMerchantSignatureNotif`. This method will return a URL-safe base64 string. To make sure the comparison is fair, this method should also be applied to the received signature, the library includes an exported function called `fromBase64` to do so.
 
 ```
-const computedSignature = redsys.createMerchantSignatureNotif("sq7HjrUOBfKmC576ILgskD5srU870gJ7", params);
+const computedSignature = redsys.createMerchantSignatureNotif(secret, params);
 
 if(computedSignature === fromBase64(receivedSignature)){
   console.log("OK")
@@ -44,6 +46,12 @@ if(computedSignature === fromBase64(receivedSignature)){
   console.log("INVALID")
 }
 
+```
+
+2. As an alternative, a function `isMerchantSignatureValid` is provided, this function will return a boolean if the signature is valid or invalid.
+
+```
+const isValid = redsys.isMerchantSignatureValid(receivedSignature, secret, params);
 ```
 
 ## Useful resources
