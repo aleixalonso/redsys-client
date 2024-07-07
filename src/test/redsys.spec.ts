@@ -45,7 +45,7 @@ describe("Redsys", () => {
         params
       );
 
-      expect(fromBase64(receivedSignature) === computedSignature).toBeTruthy();
+      expect(computedSignature).toMatchSnapshot();
     });
   });
 });

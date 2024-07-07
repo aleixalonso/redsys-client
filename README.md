@@ -33,12 +33,12 @@ const signature = redsys.createMerchantSignature("sq7HjrUOBfKmC576ILgskD5srU870g
 
 ### Redsys redirect validate signature
 
-1. To validate a given signature, use `createMerchantSignatureNotif``
+1. To validate a given signature, use `createMerchantSignatureNotif`. This method will return a URL-safe base64 string. To make sure the comparison is fair, this method should also be applied to the received signature, the library includes an exported function called `fromBase64` to do so.
 
 ```
 const computedSignature = redsys.createMerchantSignatureNotif("sq7HjrUOBfKmC576ILgskD5srU870gJ7", params);
 
-if(computedSignature === receivedSignature){
+if(computedSignature === fromBase64(receivedSignature)){
   console.log("OK")
 } else {
   console.log("INVALID")
