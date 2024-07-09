@@ -6,6 +6,12 @@ Redsys redirection client inspired from the Redsys PHP and Java official clients
 
 ### Client initialization
 
+1. Install the library
+
+```
+npm install redsys-client
+```
+
 1. Create the Redsys Client
 
 ```
