@@ -12,7 +12,7 @@ Redsys redirection client inspired from the Redsys PHP and Java official clients
 npm install redsys-client
 ```
 
-1. Create the Redsys Client
+2. Create the Redsys Client
 
 ```
     const redsys = new Redsys();
