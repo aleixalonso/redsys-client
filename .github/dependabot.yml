@@ -6,6 +6,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    reviewers:
+      - "aleixalonso"
     groups:
       prod-dependencies:
         dependency-type: "production"
