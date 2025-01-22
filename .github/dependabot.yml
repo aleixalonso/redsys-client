@@ -8,8 +8,9 @@ updates:
       interval: "weekly"
     reviewers:
       - "aleixalonso"
+    assignees:
+      - "aleixalonso"
     groups:
-      prod-dependencies:
-        dependency-type: "production"
-      dev-dependencies:
-        dependency-type: "development"
+      all-dependencies:
+        patterns:
+          - "*"
