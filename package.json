@@ -20,6 +20,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "^20 || ^22 || ^24"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/aleixalonso/redsys-client.git"

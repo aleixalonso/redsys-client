@@ -12,11 +12,6 @@ export default [
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
-        format: "cjs",
-        sourcemap: true,
-      },
-      {
         file: packageJson.module,
         format: "esm",
         sourcemap: true,
@@ -25,7 +20,35 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        compilerOptions: {
+          declaration: true,
+          declarationDir: "dist/esm/types",
+          emitDeclarationOnly: false,
+        },
+      }),
+    ],
+  },
+  {
+    input: "src/index.ts",
+    output: [
+      {
+        file: packageJson.main,
+        format: "cjs",
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        compilerOptions: {
+          declaration: false,
+          emitDeclarationOnly: false,
+        },
+      }),
     ],
   },
   {
