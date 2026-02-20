@@ -14,8 +14,7 @@
     "prebuild": "rm -rf ./dist",
     "test": "jest --coverage",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test",
-    "publish": "npm publish"
+    "prepublishOnly": "npm test"
   },
   "keywords": [],
   "author": "",
