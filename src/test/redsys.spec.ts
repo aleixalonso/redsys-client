@@ -1,20 +1,22 @@
 import { Redsys } from "../redsys";
-import { fromBase64 } from "../utils";
 
 describe("Redsys", () => {
+  const merchantParameters = {
+    Ds_Merchant_MerchantCode: "999008881",
+    Ds_Merchant_Terminal: "1",
+    Ds_Merchant_TransactionType: "0",
+    Ds_Merchant_Amount: 1000,
+    Ds_Merchant_Currency: "978",
+    Ds_Merchant_Order: "1234567890",
+    Ds_Merchant_MerchantURL: "https://www.example.com",
+  };
+  const secret = "sq7HjrUOBfKmC576ILgskD5srU870gJ7"; // redsys test secret
+
   let redsys: Redsys;
 
   beforeEach(() => {
     redsys = new Redsys();
-    redsys.merchantParameters = {
-      Ds_Merchant_MerchantCode: "999008881",
-      Ds_Merchant_Terminal: "1",
-      Ds_Merchant_TransactionType: "0",
-      Ds_Merchant_Amount: 1000,
-      Ds_Merchant_Currency: "978",
-      Ds_Merchant_Order: "1234567890",
-      Ds_Merchant_MerchantURL: "https://www.example.com",
-    };
+    redsys.merchantParameters = merchantParameters;
   });
 
   describe("createMerchantParameters", () => {
@@ -27,7 +29,7 @@ describe("Redsys", () => {
   describe("createMerchantSignature", () => {
     it("Should the expected signature", () => {
       const result = redsys.createMerchantSignature(
-        "sq7HjrUOBfKmC576ILgskD5srU870gJ7" // redsys test secret
+        secret
       );
       expect(result).toMatchSnapshot();
     });
@@ -41,7 +43,7 @@ describe("Redsys", () => {
       const receivedSignature = "VF8kC7KJlVCn45Gn_75MEB2dZYsjOs5QZHrOValj5BU=";
 
       const computedSignature = redsys.createMerchantSignatureNotif(
-        "sq7HjrUOBfKmC576ILgskD5srU870gJ7", // redsys test secret
+        secret,
         params
       );
 
@@ -58,11 +60,29 @@ describe("Redsys", () => {
 
       const result = redsys.isMerchantSignatureValid(
         receivedSignature,
-        "sq7HjrUOBfKmC576ILgskD5srU870gJ7", // redsys test secret
+        secret,
         params
       );
 
       expect(result).toBeTruthy();
+    });
+  });
+
+  describe("constructor initialization", () => {
+    it("Should allow merchant parameters directly in constructor", () => {
+      const redsysFromConstructor = new Redsys(merchantParameters);
+
+      expect(redsysFromConstructor.createMerchantParameters()).toMatchSnapshot();
+      expect(redsysFromConstructor.createMerchantSignature(secret)).toMatchSnapshot();
+    });
+  });
+
+  describe("setMerchantParameters", () => {
+    it("Should allow fluent setup style", () => {
+      const redsysFluent = new Redsys().setMerchantParameters(merchantParameters);
+
+      expect(redsysFluent.createMerchantParameters()).toMatchSnapshot();
+      expect(redsysFluent.createMerchantSignature(secret)).toMatchSnapshot();
     });
   });
 });

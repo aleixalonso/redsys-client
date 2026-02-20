@@ -14,17 +14,47 @@ npm install redsys-client
 
 2. Create the Redsys Client
 
+Preferred (constructor style):
+
 ```
-    const redsys = new Redsys();
-    redsys.merchantParameters = {
-      Ds_Merchant_MerchantCode: "999008881",
-      Ds_Merchant_Terminal: "1",
-      Ds_Merchant_TransactionType: "0",
-      Ds_Merchant_Amount: 1000,
-      Ds_Merchant_Currency: "978",
-      Ds_Merchant_Order: "1234567890",
-      Ds_Merchant_MerchantURL: "https://www.example.com",
-    };
+const redsys = new Redsys({
+  Ds_Merchant_MerchantCode: "999008881",
+  Ds_Merchant_Terminal: "1",
+  Ds_Merchant_TransactionType: "0",
+  Ds_Merchant_Amount: 1000,
+  Ds_Merchant_Currency: "978",
+  Ds_Merchant_Order: "1234567890",
+  Ds_Merchant_MerchantURL: "https://www.example.com",
+});
+```
+
+Legacy-compatible (still supported):
+
+```
+const redsys = new Redsys();
+redsys.merchantParameters = {
+  Ds_Merchant_MerchantCode: "999008881",
+  Ds_Merchant_Terminal: "1",
+  Ds_Merchant_TransactionType: "0",
+  Ds_Merchant_Amount: 1000,
+  Ds_Merchant_Currency: "978",
+  Ds_Merchant_Order: "1234567890",
+  Ds_Merchant_MerchantURL: "https://www.example.com",
+};
+```
+
+Fluent setup alternative:
+
+```
+const redsys = new Redsys().setMerchantParameters({
+  Ds_Merchant_MerchantCode: "999008881",
+  Ds_Merchant_Terminal: "1",
+  Ds_Merchant_TransactionType: "0",
+  Ds_Merchant_Amount: 1000,
+  Ds_Merchant_Currency: "978",
+  Ds_Merchant_Order: "1234567890",
+  Ds_Merchant_MerchantURL: "https://www.example.com",
+});
 ```
 
 ### Redsys request
