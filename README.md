@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/aleixalonso/redsys-client/actions/workflows/test-code.yml/badge.svg?branch=main)](https://github.com/aleixalonso/redsys-client/actions/workflows/test-code.yml)
 [![npm version](https://img.shields.io/npm/v/redsys-client)](https://www.npmjs.com/package/redsys-client)
 [![Coverage](https://raw.githubusercontent.com/aleixalonso/redsys-client/main/coverage-badge.svg)](https://github.com/aleixalonso/redsys-client/actions/workflows/test-code.yml)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Redsys redirection client inspired from the Redsys PHP and Java official clients.
 
