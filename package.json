@@ -15,8 +15,13 @@
     "test": "jest --coverage",
     "prepublishOnly": "npm test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "redsys",
+    "payment",
+    "gateway",
+    "client"
+  ],
+  "author": "Aleix Alonso",
   "license": "MIT",
   "engines": {
     "node": "^20 || ^22 || ^24"
