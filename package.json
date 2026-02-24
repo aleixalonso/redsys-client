@@ -1,6 +1,6 @@
 {
   "name": "redsys-client",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Redsys redirection client inspired from the Redsys PHP and Java official clients",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
